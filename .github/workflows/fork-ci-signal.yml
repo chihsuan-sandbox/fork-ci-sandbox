@@ -1,0 +1,11 @@
+name: Fork CI signal
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+permissions: {}
+jobs:
+  signal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - run: echo 'The fork CI bridge will read the PR through the GitHub API.'

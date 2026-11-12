@@ -1,0 +1,13 @@
+name: check
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  inner:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - uses: actions/checkout@v4
+      - name: Slow step
+        run: if [ -f .fail ]; then sleep 120; fi

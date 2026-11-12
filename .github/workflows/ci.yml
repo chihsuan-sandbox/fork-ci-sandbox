@@ -1,0 +1,39 @@
+name: CI
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo build ok
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [one, two]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
+        run: |
+          if [ -f .fail ] && [ "${{ matrix.part }}" = two ]; then
+            echo "::error title=TestExample::TestExample.testWrite failed: expected 3 but was 2"
+            exit 1
+          fi
+  odd-name:
+    name: "weird `name` | @example"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check
+        run: test ! -f .fail
+  nested:
+    uses: ./.github/workflows/check.yml
+  skipped:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo never

@@ -1,0 +1,24 @@
+name: Fork CI status
+on:
+  workflow_run:
+    workflows: [Fork CI signal]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  actions: read
+  checks: write
+  pull-requests: read
+concurrency:
+  group: fork-ci-status
+  cancel-in-progress: false
+jobs:
+  bridge:
+    if: github.repository == 'chihsuan-sandbox/fork-ci-sandbox'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: chihsuan/infrastructure-actions/fork-ci@8b7dcb668b298b03d866943790b745f30eddb0e3 # fork-ci-job-details
+        with:
+          workflow: ci.yml
+          check-name: CI (fork)
+          base-branches: main
