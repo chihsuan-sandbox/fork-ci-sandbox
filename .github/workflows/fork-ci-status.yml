@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: chihsuan/infrastructure-actions/fork-ci@8b7dcb668b298b03d866943790b745f30eddb0e3 # fork-ci-job-details
+      - uses: chihsuan/infrastructure-actions/fork-ci@e0627a9a0decef769f41b730cba478344d874435 # fork-ci-job-details
         with:
           workflow: ci.yml
           check-name: CI (fork)
