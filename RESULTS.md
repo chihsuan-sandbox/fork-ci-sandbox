@@ -11,7 +11,7 @@ a job named ``weird `name` | @example``, a reusable-workflow job that times out,
 Fork run [43229743470](https://github.com/chihsuan/fork-ci-sandbox/actions/runs/43229743470) (6 jobs: 2 success, 1 skipped, 2 failure, 1 cancelled).
 Check [131221768203](https://github.com/chihsuan-sandbox/fork-ci-sandbox/runs/131221768203):
 
-- The PR's check list shows the title: `Failing after 1m — Fork run failure: unit (two) and 2 more`.
+- The PR's check list shows the title next to the status: `Fork run failure: unit (two) and 2 more`.
 - The summary lists the three jobs that did not succeed, with links built from job IDs:
 
 | Job | Result | Failed step | Error |
